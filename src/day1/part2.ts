@@ -1,6 +1,6 @@
-import { readInput } from "../utils/helpers.js";
+import { getInput } from "../utils/helpers.js";
 
-const INPUT = readInput().split("\n\n");
+const INPUT = getInput().split("\n\n");
 
 const group = INPUT.map(caloryGroup => {
   return caloryGroup.split("\n").reduce((prev, item) => 

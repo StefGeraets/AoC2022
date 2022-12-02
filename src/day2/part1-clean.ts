@@ -7,15 +7,21 @@ type Game = [Opponent, Player];
 const games = getInput("test").split("\n").map((item) => item.split(" "));
 
 const outcomes = {
-  "AX": 3, 
-  "BY": 3, 
-  "CZ": 3,
-  "AZ": 0,
-  "BX": 0,
-  "CY": 0,
-  "AY": 6,
-  "BZ": 6,
-  "CX": 6
+  "A": {
+    "X": 3,
+    "Y": 6,
+    "Z": 0
+  },
+  "B": {
+    "X": 0,
+    "Y": 3,
+    "Z": 6
+  },
+  "C": {
+    "X": 6,
+    "Y": 0,
+    "Z": 3
+  }
 }
 
 const handValue = {
@@ -28,7 +34,7 @@ const playValue = (shape: Player) => {
   return handValue[shape];
 }
 
-const gameOutcome = ([opponent, player]: Game) => outcomes[opponent + player];
+const gameOutcome = ([opponent, player]: Game) => outcomes[opponent][player];
 
 const scores = games.reduce((count, game: Game) => count + playValue(game[1]) + gameOutcome(game), 0)
 

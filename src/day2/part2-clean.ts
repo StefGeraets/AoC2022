@@ -19,18 +19,24 @@ const handValue = {
 }
 
 const handToPlay = {
-  "AX": "Z",
-  "BX": "X",
-  "CX": "Y",
-  "AY": "X",
-  "BY": "Y",
-  "CY": "Z",
-  "AZ": "Y",
-  "BZ": "Z",
-  "CZ": "X",
+  "A": {
+    "X": "Z",
+    "Y": "X",
+    "Z": "Y"
+  },
+  "B": {
+    "X": "X",
+    "Y": "Y",
+    "Z": "Z"
+  },
+  "C": {
+    "X": "Y",
+    "Y": "Z",
+    "Z": "X"
+  },
 }
 
-const gameOutcome = ([opponent, outcome]: Game): number => handValue[handToPlay[opponent + outcome]] + gameValue[outcome];
+const gameOutcome = ([opponent, outcome]: Game): number => handValue[handToPlay[opponent][outcome]] + gameValue[outcome];
 
 const scores = games.reduce((count, game: [Opponent, Player]) => count + gameOutcome(game), 0)
 

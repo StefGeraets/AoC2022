@@ -1,6 +1,6 @@
 import { getInput } from "../utils/helpers.js";
 
-const moves = getInput().split("\n");
+const inputMoves = getInput().split("\n");
 const stackTest = {
   1: ['Z', 'N'],
   2: ["M", "C", "D"],
@@ -20,8 +20,8 @@ const inputStack = {
 }
 const stack = inputStack;
 
-const cleanMoves = moves.map(line => line.match(/\d+/g).map(Number));
-cleanMoves.map(([amount, from, to]) => {
+const moves = inputMoves.map(line => line.match(/\d+/g).map(Number));
+moves.map(([amount, from, to]) => {
   const movedBoxes = stack[from].splice(-amount);
   stack[to].push(...movedBoxes);
 })
